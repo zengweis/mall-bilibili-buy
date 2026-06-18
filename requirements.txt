@@ -1,0 +1,6 @@
+requests>=2.28.0
+urllib3>=1.26.0
+qrcode>=7.4
+brotli>=1.0
+playwright>=1.40
+alibabacloud_dysmsapi20170525>=3.0.0
