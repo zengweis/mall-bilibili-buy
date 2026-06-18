@@ -6,8 +6,8 @@ B站票务自动化下单 - 配置文件
 # ==================== B站Cookie ====================
 # 从浏览器F12 → Application → Cookies → .bilibili.com 复制
 BILIBILI_COOKIES = {
-    "SESSDATA": "4813b7b7%2C1796127365%2Ca70ad%2A62CjDKp0FkD4AjqnegytkW_XhhYDRul60G0mKErIgw0-hCb_98Ij84fpSkRsyG18YSasQSVk94SU9aRWtkMy1xQ05XWENVeXJjeEJhR2hrMmJPdUloZTE4WmZUM2xlV2hTbXpqNWRsMUNyZjNCYzdfR1dyNWdJbFN6SGRyVVpDekgzM0lRNjVDWDZnIIEC",
-    "bili_jct": "12840b0a843388ac95c2d8a2ee6eda8d",
+    "SESSDATA": "4813b7RWtkMy1xQ05XWENVeXJjeEJhR2hrMmJPdUloZTE4WmZUM2xlV2hTbXpqNWRsMUNyZjNCYzdfR1dyNWdJbFN6SGRyVVpDekgzM0lRNjVDWDZnIIEC",
+    "bili_jct": "12840b0a843388ac95",
     "DedeUserID": "625152825",
     "DedeUserID__ckMd5": "a1dec66f920f7a15",
     "sid": "eesw0qby",
@@ -73,11 +73,11 @@ SALE_MONITOR_INTERVAL = 0.5
 
 # ==================== 短信通知 ====================
 # 阿里云短信服务 (订单成功时通知)
-SMS_ACCESS_KEY = "LTAI5t9NFjEvJawxT8K5sL1p"       # 阿里云 AccessKey ID
+SMS_ACCESS_KEY = "LTAI5t9NFjEvJawxT8K5sL1p"       # 阿里云 AccessKey ID被吊销了别想用了
 SMS_ACCESS_SECRET = "bSpbf8Xy0MlmXjqDfPbdQFIkp1Oyee"    # 阿里云 AccessKey Secret
-SMS_SIGN_NAME = "拉塔托斯克"        # 短信签名
-SMS_TEMPLATE_CODE = "SMS_507390242"    # 短信模板代码
-SMS_PHONE = "13388428602"            # 接收手机号
+SMS_SIGN_NAME = ""        # 短信签名
+SMS_TEMPLATE_CODE = "S"    # 短信模板代码
+SMS_PHONE = "1"            # 接收手机号
 
 # ==================== 运行模式 ====================
 LOOP_MODE = True         # 无限重试
@@ -86,8 +86,8 @@ NTP_ENABLED = True       # NTP同步
 LEAD_MS = 200            # 提前触发ms
 
 # ==================== 联系人 ====================
-CONTACT_NAME = "曾蔚"
-CONTACT_TEL = "13388428602"
+CONTACT_NAME = ""
+CONTACT_TEL = "1302"
 
 # ==================== 定时开抢 ====================
 # 留空=立即抢, 填"2026-07-24 10:00:00"=定时抢
