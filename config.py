@@ -36,7 +36,7 @@ ORDER_TYPE = 1
 # HTTP代理，支持 http/https/socks5
 # 格式: "http://127.0.0.1:7890" 或 "socks5://127.0.0.1:1080"
 # 留空 = 不使用代理
-HTTP_PROXY = ""
+HTTP_PROXY = "http://127.0.0.1:7890"
 
 # 代理认证 (如果需要)
 PROXY_USERNAME = ""
