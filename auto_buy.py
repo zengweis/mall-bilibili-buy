@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-"""B站新版票务(mall) - 纯API下单"""
 import sys, time, json, concurrent.futures
 from datetime import datetime
 from config import (BILIBILI_COOKIES, PROJECT_ID, SCREEN_ID, SKU_ID, BUY_COUNT, PAY_MONEY, ORDER_TYPE, HTTP_PROXY, SMS_PHONE, LOOP_MODE, RETRY_DELAY, NTP_ENABLED, LEAD_MS, CONTACT_NAME, CONTACT_TEL, SCHEDULE_TIME)
@@ -8,7 +6,7 @@ CSRF = BILIBILI_COOKIES.get("bili_jct","")
 API_BASE = "https://show.bilibili.com/api/ticket"
 MALL_API = "https://mall.bilibili.com/mall-search-items/items_detail/info"
 
-# 新版需要移动端UA
+# 移动端UA
 UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148"
 WEB_LOCATION = "mall.ticket-detail"
 
@@ -18,7 +16,7 @@ def _log(tag, msg):
     print(f"[{now}{ms}] [{tag:>7}] {msg}")
 
 def gen_web_ticket(session):
-    """新版防机器人令牌 (可选, 失败不影响)"""
+    """防机器人令牌 (可选, 失败不影响)"""
     try:
         r = session.post('https://api.bilibili.com/bapis/bilibili.api.ticket.v1.Ticket/GenWebTicket', json={
             'key_id':'ec02','hexsign':'test'
@@ -83,7 +81,7 @@ def auto_buy():
                 bi = mall_data.get("basicInfoFloorVO",{})
                 mp = mall_data.get("mergeAtmospherePriceFloorVO",{}).get("mergePriceInfoVO",{})
                 _log("CHECK",f"新API: {bi.get('itemsName','?')} ¥{mp.get('leftVO',{}).get('leftTopVO',{}).get('mainPriceVOs',[{}])[0].get('priceIntegerPart','?')}-{mp.get('leftVO',{}).get('leftTopVO',{}).get('mainPriceVOs',[{}])[-1].get('priceIntegerPart','?')}")
-                _log("CHECK","⚠️ 新API无SKU字段，请手动填SCREEN_ID/SKU_ID")
+                _log("CHECK"," 新API无SKU字段，请手动填SCREEN_ID/SKU_ID")
         ts=0; tn=""
         for s in pd.get("screen_list",[]):
             if str(s.get("id"))==SCREEN_ID:
@@ -182,7 +180,7 @@ def auto_buy():
             if SMS_PHONE:
                 try:
                     from sms import notify_order_success; notify_order_success(SMS_PHONE)
-                    _log("SMS","✅")
+                    _log("SMS","ok")
                 except: pass
             return True
         status = "🔄" if errno in (900001,1) else "❌"
@@ -228,7 +226,7 @@ if __name__=="__main__":
         print(f"\n无限重试(间隔{RETRY_DELAY}s) Ctrl+C停止")
         while True:
             a+=1
-            print(f"\n{'='*50}\n  🔄 第{a}次 (OK:{ok} FAIL:{nok})\n{'='*50}")
+            print(f"\n{'='*50}\n   第{a}次 (OK:{ok} FAIL:{nok})\n{'='*50}")
             try:
                 if auto_buy():ok+=1;print("\n🎉 抢到了!");break
                 else:nok+=1

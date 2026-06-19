@@ -1,7 +1,4 @@
-"""
-B站票务API客户端
-处理Cookie、CSRF、请求签名、代理等
-"""
+# API客户端处理Cookie、CSRF、请求签名、代理
 import time
 import hashlib
 import requests
@@ -214,10 +211,10 @@ class BilibiliTicketAPI:
             )
             data = resp.json()
             ip = data.get("origin", "unknown")
-            print(f"[代理测试] ✅ 出口IP: {ip}")
+            print(f"[代理测试]  出口IP: {ip}")
             return True
         except Exception as e:
-            print(f"[代理测试] ❌ 失败: {e}")
+            print(f"[代理测试]  失败: {e}")
             return False
 
     # ==================== Cookie检查 ====================
